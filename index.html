@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M13.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity')">
+        <div class="title">
+            <span>🌟 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 2.5 minutos</span>
+        </div>
+        <div class="subtitle">Continuemos con Glide y configuremos la pantalla de inicio</div>
+    </div>
+    <div id="introActivity" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 2 "Bienvenida"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hola, Genios. Hoy vamos a continuar con nuestro avance en Glide y configuraremos la pantalla de inicio de nuestra app de tareas familiares. ¡Listos para comenzar!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 3 "¿Cómo Están?"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Antes de que empecemos, quiero saber cómo están hoy. Si están listos para continuar con el montaje en Glide, levanten una mano. Si sienten que necesitan un minuto más para activarse, apoyen las manos en la mesa.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 4 "Gracias por Asistir"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Vamos a juntar nuestras manos como de costumbre para agradecer la oportunidad de aprender algo nuevo. ¡Gracias por estar aquí, Genios!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 5 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy tenemos un único objetivo: configurar la pantalla de inicio de nuestra app en Glide, mostrando tareas pendientes, próximas a vencer y completadas, usando gráficos y barras de progreso para lograr una vista funcional y clara.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (3 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('stateChangeActivity')">
+        <div class="title">
+            <span>🌬️ Actividad 2: State Change (3 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Técnica de respiración para concentración</div>
+    </div>
+    <div id="stateChangeActivity" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 5 "Respiración de Abeja"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Antes de comenzar con nuestro reto en Glide, vamos a hacer una breve técnica de respiración. Esta respiración, llamada la respiración de abeja, nos ayudará a despejar la mente y enfocarnos mejor en el trabajo que vamos a hacer hoy. Haremos tres respiraciones profundas. Veamos cómo se hace.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 6 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 7 "Respiración de Abeja - Avanzada"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora vamos a hacer una variación. Tapen sus ojos con los dedos índice y medio, y tapen sus oídos con los pulgares. Respiramos profundamente en tres tiempos y al soltar el aire haremos el sonido 'OHM' con la boca cerrada. Haremos este ejercicio tres veces. Cuando terminen, siéntense tranquilos.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (2 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('teamGniusActivity')">
+        <div class="title">
+            <span>👥 Actividad 3: Team Gnius (2 pasos)</span>
+            <span>⏰ Tiempo: 1.5 minutos</span>
+        </div>
+        <div class="subtitle">Trabajo en parejas para el proyecto en Glide</div>
+    </div>
+    <div id="teamGniusActivity" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 8 "Formación de Parejas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, hoy vamos a trabajar en las mismas parejas que formamos en sus equipos de 4 personas. Tienen 1 minuto para reunirse con su compañero de equipo.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 9 "Cronómetro - 1 Minuto"</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (7 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challengeActivity')">
+        <div class="title">
+            <span>🎯 Actividad 4: Challenge (7 pasos)</span>
+            <span>⏰ Tiempo: 35 minutos</span>
+        </div>
+        <div class="subtitle">Montar el dashboard en Glide y asegurarse de que funcione en la vista móvil y web</div>
+    </div>
+    <div id="challengeActivity" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 10 "Challenge - Título"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, el reto de hoy es montar en Glide el dashboard que diseñaron en la misión anterior. Usarán todos los elementos necesarios y deberán revisar que se vea bien tanto en la vista web como en la vista móvil. Recuerden crear una pantalla nueva del tipo 'Custom Screen' para comenzar desde cero y hacer su dashboard personalizado.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 11 "Verificación de Vistas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Es muy importante que alternen entre la vista web y la vista móvil para asegurarse de que su dashboard se vea bien en ambos entornos. Tómense el tiempo para revisar y ajustar cualquier elemento si es necesario.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (35 minutos): Proyectar Diapositiva 12 "Cronómetro - 20 Minutos"</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">
+                N/A
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 13 "Compartir Diseños"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora me gustaría que tres parejas voluntarias de diferentes equipos compartieran su diseño de dashboard y explicaran cómo decidieron organizar los elementos. ¿Quiénes quieren ser los primeros?
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (3 minutos): Proyectar Diapositiva 14 "Tiempo de Presentación"</div>
+            <div class="section-title">Acción</div>
+            <div class="dialogue">
+                Vamos a escuchar a las tres parejas voluntarias. Cada una tendrá 1 minuto para presentar su dashboard y explicar su enfoque.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar Diapositiva 15 "Revisión de Objetivos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy hemos montado el dashboard en Glide y nos hemos asegurado de que se vea bien tanto en la vista web como en la vista móvil. ¡Gran trabajo!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (0.5 minutos): Proyectar Diapositiva 16 "You've got Mon-e"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                ¡Felicidades, Genios! Han completado un excelente trabajo montando sus dashboards y han ganado Mon-e por su dedicación.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (1 paso) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honorActivity')">
+        <div class="title">
+            <span>🏅 Actividad 5: Honor de Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 0.5 minutos</span>
+        </div>
+        <div class="subtitle">Cerrar la misión con un momento de honor y gratitud</div>
+    </div>
+    <div id="honorActivity" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 17 "Honor de Dojo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, hemos llegado al final de la misión de hoy. Antes de irnos, les pido que cada equipo pase al frente y me entregue las Magic Tablets. ¡Gracias por su esfuerzo hoy!
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>
